@@ -36,7 +36,27 @@ func Get(path string, out interface{}) error {
 	return nil
 }
 
+// GetRoot returns a map of the API resource names and urls.
 func GetRoot() (map[string]string, error) {
 	var out map[string]string
 	return out, Get("/", &out)
+}
+
+// getFilms fetches all films for each URL and returns a slice
+// of Film types.
+func getFilms(urls []string) (films []Film, err error) {
+	if len(urls) == 0 {
+		return
+	}
+
+	for _, url := range urls {
+		var f Film
+		if err = Get(url, &f); err != nil {
+			return
+		}
+		films = append(films, f)
+	}
+
+	return
+
 }

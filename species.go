@@ -26,17 +26,5 @@ func GetSpecies(id int) (Species, error) {
 }
 
 func (s Species) GetFilms() (films []Film, err error) {
-	if len(s.Films) == 0 {
-		return
-	}
-
-	for _, url := range s.Films {
-		var f Film
-		if err = Get(url, &f); err != nil {
-			return
-		}
-		films = append(films, f)
-	}
-
-	return
+	return getFilms(s.Films)
 }

@@ -23,3 +23,7 @@ func GetPlanet(id int) (Planet, error) {
 	var p Planet
 	return p, Get(fmt.Sprintf("/planets/%d", id), &p)
 }
+
+func (p Planet) GetFilms() (films []Film, err error) {
+	return getFilms(p.Films)
+}
