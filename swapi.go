@@ -71,3 +71,21 @@ func getFilms(urls []string) (films []Film, err error) {
 	return
 
 }
+
+// getPeople fetches all pilots for each URL and returns a slice
+// of Person types
+func getPeople(urls []string) (people []Person, err error) {
+	if len(urls) == 0 {
+		return
+	}
+
+	for _, url := range urls {
+		var p Person
+		if err = Get(url, &p); err != nil {
+			return
+		}
+		people = append(people, p)
+	}
+
+	return
+}

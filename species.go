@@ -28,3 +28,7 @@ func GetSpecies(id int) (Species, error) {
 func (s Species) GetFilms() (films []Film, err error) {
 	return getFilms(s.Films)
 }
+
+func (s Species) GetPeople() (people []Person, err error) {
+	return getPeople(s.People)
+}

@@ -27,3 +27,7 @@ func GetPlanet(id int) (Planet, error) {
 func (p Planet) GetFilms() (films []Film, err error) {
 	return getFilms(p.Films)
 }
+
+func (p Planet) GetResidents() (residents []Person, err error) {
+	return getPeople(p.Residents)
+}

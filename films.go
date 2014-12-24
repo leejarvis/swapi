@@ -28,6 +28,10 @@ func GetFilm(id int) (Film, error) {
 	return f, Get(fmt.Sprintf("/films/%d", id), &f)
 }
 
+func (f Film) GetCharacters() (characters []Person, err error) {
+	return getPeople(f.Characters)
+}
+
 // PrintCrawl prints the opening crawl to os.Stdout
 func (f Film) PrintCrawl() {
 	scanner := bufio.NewScanner(strings.NewReader(f.OpeningCrawl))
