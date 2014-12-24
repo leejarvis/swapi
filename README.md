@@ -21,6 +21,10 @@ func main() {
 	if s, err := swapi.GetSpecies(3); err == nil {
 		fmt.Println(s.Name)
 	}
+
+	if f, err := swapi.GetFilm(1); err == nil {
+		f.PrintCrawl()
+	}
 }
 ```
 

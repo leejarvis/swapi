@@ -1,6 +1,11 @@
 package swapi
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"strings"
+	"time"
+)
 
 type Film struct {
 	Title        string   `json:"title"`
@@ -21,4 +26,13 @@ type Film struct {
 func GetFilm(id int) (Film, error) {
 	var f Film
 	return f, Get(fmt.Sprintf("/films/%d", id), &f)
+}
+
+// PrintCrawl prints the opening crawl to os.Stdout
+func (f Film) PrintCrawl() {
+	scanner := bufio.NewScanner(strings.NewReader(f.OpeningCrawl))
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+		time.Sleep(300 * time.Millisecond)
+	}
 }
