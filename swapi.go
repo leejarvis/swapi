@@ -10,6 +10,8 @@ const BaseURL = "http://swapi.co/api"
 
 var ErrNotFound = errors.New("404: not found")
 
+var client = &http.Client{}
+
 // Get makes an API call to the path, it decodes the JSON response
 // and stores it into out.
 func Get(path string, out interface{}) error {
@@ -18,13 +20,16 @@ func Get(path string, out interface{}) error {
 		url = BaseURL + path
 	}
 
-	res, err := http.Get(url)
-	defer res.Body.Close()
+	req, err := http.NewRequest("GET", url, nil)
 
 	if err != nil {
 		return err
 	}
 
+	req.Header.Add("User-Agent", "Go Swapi. github.com/leejarvis/swapi")
+
+	res, err := client.Do(req)
+	defer res.Body.Close()
 	if res.StatusCode == 404 {
 		return ErrNotFound
 	}
