@@ -29,3 +29,7 @@ func GetVehicle(id int) (Vehicle, error) {
 func (v Vehicle) GetFilms() (films []Film, err error) {
 	return getFilms(v.Films)
 }
+
+func (v Vehicle) GetPilots() (pilots []Person, err error) {
+	return getPeople(v.Pilots)
+}

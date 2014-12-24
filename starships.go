@@ -31,3 +31,7 @@ func GetStarship(id int) (Starship, error) {
 func (s Starship) GetFilms() (films []Film, err error) {
 	return getFilms(s.Films)
 }
+
+func (s Starship) GetPilots() (pilots []Person, err error) {
+	return getPeople(s.Pilots)
+}
