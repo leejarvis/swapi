@@ -29,7 +29,13 @@ func Get(path string, out interface{}) error {
 	req.Header.Add("User-Agent", "Go Swapi. github.com/leejarvis/swapi")
 
 	res, err := client.Do(req)
+
+	if err != nil {
+		return err
+	}
+
 	defer res.Body.Close()
+
 	if res.StatusCode == 404 {
 		return ErrNotFound
 	}
