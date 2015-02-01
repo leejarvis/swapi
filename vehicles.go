@@ -26,10 +26,10 @@ func GetVehicle(id int) (Vehicle, error) {
 	return v, Get(fmt.Sprintf("/vehicles/%d", id), &v)
 }
 
-func (v Vehicle) GetFilms() (films []Film, err error) {
+func (v Vehicle) GetFilms() ([]Film, error) {
 	return getFilms(v.Films)
 }
 
-func (v Vehicle) GetPilots() (pilots []Person, err error) {
+func (v Vehicle) GetPilots() ([]Person, error) {
 	return getPeople(v.Pilots)
 }

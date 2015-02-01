@@ -28,7 +28,7 @@ func GetFilm(id int) (Film, error) {
 	return f, Get(fmt.Sprintf("/films/%d", id), &f)
 }
 
-func (f Film) GetCharacters() (characters []Person, err error) {
+func (f Film) GetCharacters() ([]Person, error) {
 	return getPeople(f.Characters)
 }
 

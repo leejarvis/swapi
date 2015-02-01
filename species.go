@@ -25,10 +25,10 @@ func GetSpecies(id int) (Species, error) {
 	return s, Get(fmt.Sprintf("/species/%d", id), &s)
 }
 
-func (s Species) GetFilms() (films []Film, err error) {
+func (s Species) GetFilms() ([]Film, error) {
 	return getFilms(s.Films)
 }
 
-func (s Species) GetPeople() (people []Person, err error) {
+func (s Species) GetPeople() ([]Person, error) {
 	return getPeople(s.People)
 }

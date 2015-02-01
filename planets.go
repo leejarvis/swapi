@@ -24,10 +24,10 @@ func GetPlanet(id int) (Planet, error) {
 	return p, Get(fmt.Sprintf("/planets/%d", id), &p)
 }
 
-func (p Planet) GetFilms() (films []Film, err error) {
+func (p Planet) GetFilms() ([]Film, error) {
 	return getFilms(p.Films)
 }
 
-func (p Planet) GetResidents() (residents []Person, err error) {
+func (p Planet) GetResidents() ([]Person, error) {
 	return getPeople(p.Residents)
 }

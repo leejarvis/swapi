@@ -28,10 +28,10 @@ func GetStarship(id int) (Starship, error) {
 	return s, Get(fmt.Sprintf("/starships/%d", id), &s)
 }
 
-func (s Starship) GetFilms() (films []Film, err error) {
+func (s Starship) GetFilms() ([]Film, error) {
 	return getFilms(s.Films)
 }
 
-func (s Starship) GetPilots() (pilots []Person, err error) {
+func (s Starship) GetPilots() ([]Person, error) {
 	return getPeople(s.Pilots)
 }
