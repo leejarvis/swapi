@@ -56,10 +56,6 @@ func GetRoot() (map[string]string, error) {
 // getFilms fetches all films for each URL and returns a slice
 // of Film types.
 func getFilms(urls []string) (films []Film, err error) {
-	if len(urls) == 0 {
-		return
-	}
-
 	for _, url := range urls {
 		var f Film
 		if err = Get(url, &f); err != nil {
@@ -72,13 +68,9 @@ func getFilms(urls []string) (films []Film, err error) {
 
 }
 
-// getPeople fetches all pilots for each URL and returns a slice
+// getPeople fetches all people for each URL and returns a slice
 // of Person types
 func getPeople(urls []string) (people []Person, err error) {
-	if len(urls) == 0 {
-		return
-	}
-
 	for _, url := range urls {
 		var p Person
 		if err = Get(url, &p); err != nil {
